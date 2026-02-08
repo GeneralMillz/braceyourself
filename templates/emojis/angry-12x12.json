@@ -1,0 +1,26 @@
+{
+  "id": "emoji-angry-12",
+  "name": "Angry 12",
+  "category": "Emojis",
+  "width": 12,
+  "height": 12,
+  "palette": {
+    "A": "#ff8a80",
+    "B": "#263238",
+    "C": "#6d4c41"
+  },
+  "pixelGrid": [
+    "..AAAAAA....",
+    ".AAAAAAAA...",
+    ".AABBBBAA...",
+    ".AA.BB.AA...",
+    ".AA....AA...",
+    ".AA.CC.AA...",
+    ".AAAAAAAA...",
+    ".AAAAAAAA...",
+    "..AAAAAA....",
+    "............",
+    "............",
+    "............"
+  ]
+}

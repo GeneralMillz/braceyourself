@@ -1,0 +1,26 @@
+{
+  "id": "emoji-winking-12",
+  "name": "Winking 12",
+  "category": "Emojis",
+  "width": 12,
+  "height": 12,
+  "palette": {
+    "A": "#ffd54f",
+    "B": "#263238",
+    "C": "#6d4c41"
+  },
+  "pixelGrid": [
+    "..AAAAAA....",
+    ".AAAAAAAA...",
+    ".AAAAAAAA...",
+    ".AA.B...AA...",
+    ".AA....AA...",
+    ".AA.CC.AA...",
+    ".AAAAAAAA...",
+    ".AAAAAAAA...",
+    "..AAAAAA....",
+    "............",
+    "............",
+    "............"
+  ]
+}

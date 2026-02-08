@@ -1,0 +1,30 @@
+{
+  "id": "animal-hamster-16",
+  "name": "Hamster 16",
+  "category": "Animals",
+  "width": 16,
+  "height": 16,
+  "palette": {
+    "A": "#ffe0b2",
+    "B": "#263238",
+    "C": "#ffccbc"
+  },
+  "pixelGrid": [
+    "....AA....AA....",
+    "...AAAA..AAAA...",
+    "..AAAAAAAAAAAA..",
+    "..AAAA.BB.AAAA..",
+    "..AAAA.CC.AAAA..",
+    "..AAAAAAAAAAAA..",
+    "...AAAAAAAAAA...",
+    "....AAAAAAAA....",
+    ".....AAAAAA.....",
+    "......AAAA......",
+    ".......AA.......",
+    "................",
+    "................",
+    "................",
+    "................",
+    "................"
+  ]
+}

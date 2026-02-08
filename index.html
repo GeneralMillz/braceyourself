@@ -1,286 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BraceYourself - Inspiring wellness and strength movement">
-  <meta name="theme-color" content="#E91E63">
-  <meta property="og:title" content="BraceYourself">
-  <meta property="og:description" content="Inspiring wellness and strength movement">
-  <meta property="og:url" content="https://braceyourself.evergreenmediadesign.com">
-  <title>BraceYourself | Wellness & Strength</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
-  <style>
-    :root {
-      --primary: #E91E63;
-      --primary-dark: #C2185B;
-      --secondary: #8B008B;
-      --bg: #121212;
-      --text: #FFFFFF;
-      --card-bg: #1E1E1E;
-      --accent-light: rgba(233, 30, 99, 0.1);
-      --border-accent: rgba(233, 30, 99, 0.2);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, var(--bg) 0%, #2D1B3D 100%);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .container {
-      max-width: 1000px;
-      width: 100%;
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      border: 1px solid var(--border-accent);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .logo {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subtitle {
-      color: #CCCCCC;
-      font-size: 1.125rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-section {
-      margin: 2rem 0;
-      padding: 2rem;
-      background: var(--accent-light);
-      border: 1px solid var(--border-accent);
-      border-radius: 15px;
-      text-align: center;
-    }
-
-    .hero-section h2 {
-      color: var(--primary);
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-section p {
-      color: #CCCCCC;
-      line-height: 1.8;
-      font-size: 1.05rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .feature-card {
-      background: var(--accent-light);
-      border: 1px solid var(--border-accent);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.2);
-    }
-
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .feature-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-description {
-      color: #AAAAAA;
-      font-size: 0.875rem;
-      line-height: 1.6;
-    }
-
-    .status-grid {
-      display: grid;
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    .status-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem;
-      background: var(--accent-light);
-      border-radius: 10px;
-      border: 1px solid var(--border-accent);
-    }
-
-    .status-label {
-      font-weight: 600;
-      color: #CCCCCC;
-    }
-
-    .status-value {
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      padding: 0.875rem 1.75rem;
-      border-radius: 10px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-accent);
-      color: #888888;
-      font-size: 0.875rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halley's Dashboard – Pattern Designer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>">
+    <link rel="stylesheet" href="theme_soft_pastel.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="print.css" media="print">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="logo">💪</div>
-      <h1>BraceYourself</h1>
-      <p class="subtitle">Inspiring Wellness & Strength Movement</p>
-    </div>
+    <!-- Welcome Screen Overlay -->
+    <div id="welcomeScreen" class="welcome-overlay">
+        <div class="welcome-content">
+            <h1 class="welcome-title">Welcome, Halley</h1>
+            <p class="welcome-subtitle">What would you like to create today?</p>
+            
+            <div class="welcome-actions">
+                <button class="welcome-btn" id="welcomeStartTemplate">
+                    <span class="welcome-btn-icon">📋</span>
+                    <span class="welcome-btn-text">Start from Template</span>
+                </button>
+                <button class="welcome-btn" id="welcomeStartPhoto">
+                    <span class="welcome-btn-icon">📷</span>
+                    <span class="welcome-btn-text">Start from Photo</span>
+                </button>
+                <button class="welcome-btn" id="welcomeStartBlank">
+                    <span class="welcome-btn-icon">✨</span>
+                    <span class="welcome-btn-text">Start from Blank Grid</span>
+                </button>
+            </div>
 
-    <div class="hero-section">
-      <h2>Empower Your Journey</h2>
-      <p>
-        BraceYourself is a community-driven platform dedicated to helping individuals build strength,
-        confidence, and resilience. Whether you're starting your wellness journey or taking it to the
-        next level, we're here to support you every step of the way.
-      </p>
-    </div>
+            <div class="welcome-recent" id="welcomeRecentSection" style="display: none;">
+                <h3 class="welcome-recent-title">Continue where you left off</h3>
+                <div class="welcome-recent-grid" id="welcomeRecentGrid"></div>
+            </div>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <span class="feature-icon">🎯</span>
-        <div class="feature-title">Goal Setting</div>
-        <div class="feature-description">
-          Define and track your personal wellness goals with our intuitive planning tools.
+            <p class="welcome-footer">Made for you by Jerry ❤️</p>
         </div>
-      </div>
+    </div>
 
-      <div class="feature-card">
-        <span class="feature-icon">📊</span>
-        <div class="feature-title">Progress Tracking</div>
-        <div class="feature-description">
-          Monitor your growth and celebrate milestones with detailed analytics and insights.
+    <!-- Branding Header -->
+    <header class="branding-header">
+        <div class="branding-left">Halley's Dashboard</div>
+        <div class="branding-right">
+            <svg class="heart-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="#ffc0cb" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
         </div>
-      </div>
+    </header>
 
-      <div class="feature-card">
-        <span class="feature-icon">👥</span>
-        <div class="feature-title">Community</div>
-        <div class="feature-description">
-          Connect with others on similar journeys and build a supportive network.
+    <header class="app-header">
+        <div class="container">
+            <h1>Brace Yourself</h1>
+            <p class="subtitle">Design alpha bracelet patterns for BraceletBook</p>
         </div>
-      </div>
+    </header>
 
-      <div class="feature-card">
-        <span class="feature-icon">🏋️</span>
-        <div class="feature-title">Fitness Resources</div>
-        <div class="feature-description">
-          Access curated workouts, nutrition tips, and wellness content.
+    <main class="app-main">
+        <div class="container-full">
+            <div class="app-layout">
+                <!-- Left: Grid Editor -->
+                <section class="editor-section">
+                    <div class="editor-header">
+                        <h2>Pattern Editor</h2>
+                    </div>
+                    <div class="grid-container" id="gridContainer"></div>
+                </section>
+
+                <!-- Right: Controls Panel -->
+                <aside class="controls-panel">
+                    <!-- Guided Flow Panel -->
+                    <div class="panel guided-panel" id="guidedFlowPanel" style="display: none;">
+                        <h3>✨ Guided Setup</h3>
+                        <div class="guided-content" id="guidedContent"></div>
+                    </div>
+
+                    <!-- Recent Designs -->
+                    <div class="panel" id="recentDesignsPanel" style="display: none;">
+                        <h3>Recent Designs</h3>
+                        <div class="recent-designs-grid" id="recentDesignsGrid"></div>
+                    </div>
+
+                    <!-- Palette -->
+                    <div class="panel">
+                        <h3>Color Palette</h3>
+                        <div class="palette-list" id="paletteList"></div>
+                        <div class="palette-add space-y-small">
+                            <div class="color-input-group">
+                                <input 
+                                    type="color" 
+                                    id="newColorInput" 
+                                    class="color-picker"
+                                    value="#a8d8ea"
+                                    aria-label="Choose a color for new palette entry"
+                                >
+                                <input 
+                                    type="text" 
+                                    id="newColorLabel" 
+                                    class="color-label-input"
+                                    placeholder="Color name (optional)"
+                                    aria-label="Optional label for new color"
+                                >
+                            </div>
+                            <button 
+                                class="btn btn-small" 
+                                id="addColorBtn"
+                                aria-label="Add new color to palette"
+                            >
+                                Add Color
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grid Size -->
+                    <div class="panel">
+                        <h3>Grid Size</h3>
+                        <div class="size-controls space-y-small">
+                            <div class="size-input-group">
+                                <label for="widthInput">Width (columns):</label>
+                                <input 
+                                    type="number" 
+                                    id="widthInput" 
+                                    class="size-input"
+                                    value="24" 
+                                    min="4" 
+                                    max="80"
+                                    aria-label="Grid width in columns"
+                                >
+                            </div>
+                            <div class="size-input-group">
+                                <label for="heightInput">Height (rows):</label>
+                                <input 
+                                    type="number" 
+                                    id="heightInput" 
+                                    class="size-input"
+                                    value="24" 
+                                    min="4" 
+                                    max="80"
+                                    aria-label="Grid height in rows"
+                                >
+                            </div>
+                            <button 
+                                class="btn btn-small" 
+                                id="resizeGridBtn"
+                                aria-label="Apply new grid size"
+                            >
+                                Resize Grid
+                            </button>
+                        </div>
+                        <p class="size-hint">Tip: Right-click or Shift+Click to erase cells</p>
+                    </div>
+
+                    <!-- Image Import & Auto-Pattern -->
+                    <div class="panel import-panel">
+                        <h3>Image Import & Auto-Pattern</h3>
+                        <div class="import-controls space-y-small">
+                            <div class="import-file-input">
+                                <label for="importImageInput" class="file-input-label">Upload Image (PNG/JPG/WebP):</label>
+                                <input 
+                                    type="file" 
+                                    id="importImageInput"
+                                    accept="image/png,image/jpeg,image/webp"
+                                    aria-label="Upload image file"
+                                >
+                            </div>
+
+                            <div class="import-original-preview">
+                                <p class="preview-label">Original:</p>
+                                <canvas 
+                                    id="imageOriginalPreview" 
+                                    class="preview-canvas"
+                                    aria-label="Original image preview"
+                                ></canvas>
+                            </div>
+
+                            <div class="import-size-inputs space-y-small">
+                                <label for="importWidth" class="input-label">Target Width (cols):</label>
+                                <input 
+                                    type="number" 
+                                    id="importWidth"
+                                    class="size-input"
+                                    value="24"
+                                    min="4"
+                                    max="80"
+                                    aria-label="Target grid width"
+                                >
+                                
+                                <label for="importHeight" class="input-label">Target Height (rows):</label>
+                                <input 
+                                    type="number" 
+                                    id="importHeight"
+                                    class="size-input"
+                                    value="24"
+                                    min="4"
+                                    max="80"
+                                    aria-label="Target grid height"
+                                >
+                                
+                                <label for="importMaxColors" class="input-label">Max Colors:</label>
+                                <input 
+                                    type="number" 
+                                    id="importMaxColors"
+                                    class="size-input"
+                                    value="6"
+                                    min="2"
+                                    max="12"
+                                    aria-label="Maximum number of colors in reduced palette"
+                                >
+                                
+                                <!-- NEW: Detail Boost -->
+                                <label for="detailBoostSlider" class="input-label">Detail Boost:</label>
+                                <div class="slider-container">
+                                    <input 
+                                        type="range" 
+                                        id="detailBoostSlider"
+                                        class="detail-slider"
+                                        value="1"
+                                        min="0"
+                                        max="2"
+                                        step="1"
+                                        aria-label="Detail boost level"
+                                    >
+                                    <div class="slider-labels">
+                                        <span>Soft</span>
+                                        <span>Balanced</span>
+                                        <span>Sharp</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- NEW: Smart Resize Mode -->
+                                <label for="resizeModeSelect" class="input-label">Smart Resize Mode:</label>
+                                <select 
+                                    id="resizeModeSelect"
+                                    class="mode-select"
+                                    aria-label="Resize mode selection"
+                                >
+                                    <option value="fit">Fit (No Crop)</option>
+                                    <option value="fill" selected>Fill (Crop to Fit)</option>
+                                    <option value="centeredCrop">Auto-Center Subject</option>
+                                </select>
+                            </div>
+
+                            <!-- NEW: Advanced Options -->
+                            <div class="advanced-options space-y-small">
+                                <!-- Palette Lock Toggle -->
+                                <div class="toggle-option">
+                                    <label class="toggle-label">
+                                        <input 
+                                            type="checkbox" 
+                                            id="paletteLockToggle"
+                                            class="toggle-checkbox"
+                                            aria-label="Use current palette instead of generating new one"
+                                        >
+                                        <span class="toggle-switch"></span>
+                                        <span class="toggle-text">Use My Current Palette</span>
+                                    </label>
+                                </div>
+                                
+                                <!-- Dithering Toggle -->
+                                <div class="toggle-option">
+                                    <label class="toggle-label">
+                                        <input 
+                                            type="checkbox" 
+                                            id="ditheringToggle"
+                                            class="toggle-checkbox"
+                                            aria-label="Enable Floyd-Steinberg dithering"
+                                        >
+                                        <span class="toggle-switch"></span>
+                                        <span class="toggle-text">Enable Dithering</span>
+                                    </label>
+                                </div>
+
+                                <!-- Auto-Template Toggle (Turtles) -->
+                                <div class="toggle-option">
+                                    <label class="toggle-label">
+                                        <input 
+                                            type="checkbox" 
+                                            id="autoTemplateToggle"
+                                            class="toggle-checkbox"
+                                            aria-label="Enable turtle-friendly auto-template mode"
+                                        >
+                                        <span class="toggle-switch"></span>
+                                        <span class="toggle-text">🐢 Turtle Mode (Auto Color Enhance)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Loading Spinner Overlay -->
+                            <div class="worker-loading-overlay hidden" id="workerLoadingOverlay">
+                                <div class="spinner"></div>
+                                <p class="loading-message" id="loadingMessage">Processing...</p>
+                                <p class="loading-progress" id="loadingProgress">0%</p>
+                            </div>
+
+                            <button 
+                                class="btn btn-small" 
+                                id="processImageBtn"
+                                aria-label="Process image with color reduction"
+                                disabled
+                            >
+                                Process Image
+                            </button>
+
+                            <div class="import-reduced-preview" id="reducedPreviewContainer" style="display: none;">
+                                <p class="preview-label">Reduced Preview:</p>
+                                <canvas 
+                                    id="imageReducedPreview" 
+                                    class="preview-canvas"
+                                    aria-label="Reduced image preview"
+                                ></canvas>
+                                <button 
+                                    class="btn btn-small" 
+                                    id="sendToGridBtn"
+                                    aria-label="Apply reduced image to grid"
+                                    disabled
+                                >
+                                    Send to Grid
+                                </button>
+                                
+                                <!-- Worker Status -->
+                                <div class="worker-status" id="workerStatus">
+                                    <span class="status-icon">⚡</span>
+                                    <span class="status-text">Web Worker Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template Library -->
+                    <div class="panel">
+                        <h3>Template Library</h3>
+                        <div class="template-category-buttons space-y-small">
+                            <button class="category-btn active" data-category="all">All</button>
+                            <button class="category-btn" data-category="turtles">Turtles</button>
+                            <button class="category-btn" data-category="hearts">Hearts</button>
+                            <button class="category-btn" data-category="flowers">Flowers</button>
+                            <button class="category-btn" data-category="animals">Animals</button>
+                            <button class="category-btn" data-category="emojis">Emojis</button>
+                            <button class="category-btn" data-category="shapes">Shapes</button>
+                            <button class="category-btn" data-category="letters">Letters</button>
+                            <button class="category-btn" data-category="icons">Icons</button>
+                        </div>
+                        
+                        <div class="template-actions">
+                            <button class="btn btn-small template-random-btn" data-category="turtles">Random Turtle</button>
+                            <button class="btn btn-small template-random-btn" data-category="hearts">Random Heart</button>
+                            <button class="btn btn-small template-random-btn" data-category="flowers">Random Flower</button>
+                            <button class="btn btn-small template-random-btn" data-category="animals">Random Animal</button>
+                            <button class="btn btn-small template-random-btn" data-category="emojis">Random Emoji</button>
+                            <button class="btn btn-small template-surprise-btn" id="surpriseMeBtn">Surprise Me</button>
+                        </div>
+                        
+                        <div class="template-grid" id="templateGrid"></div>
+                    </div>
+
+                    <!-- Inspiration Gallery -->
+                    <div class="panel">
+                        <h3>Inspiration Gallery</h3>
+                        <div class="inspiration-category-buttons space-y-small">
+                            <button class="category-btn active" data-category="all">All</button>
+                            <button class="category-btn" data-category="aesthetic">Aesthetic</button>
+                            <button class="category-btn" data-category="nature">Nature</button>
+                            <button class="category-btn" data-category="geometric">Geometric</button>
+                            <button class="category-btn" data-category="minimalist">Minimalist</button>
+                        </div>
+                        <div class="inspiration-grid" id="inspirationGrid"></div>
+                    </div>
+
+                    <!-- Color Harmonizer -->
+                    <div class="panel">
+                        <h3>Color Harmonizer</h3>
+                        <div class="harmonizer-controls space-y-small">
+                            <div class="color-input-group">
+                                <label for="harmonizerColorPicker">Base Color:</label>
+                                <input 
+                                    type="color" 
+                                    id="harmonizerColorPicker"
+                                    class="color-picker"
+                                    value="#a8d8ea"
+                                    aria-label="Choose base color for palette generation"
+                                >
+                            </div>
+                            <button class="btn btn-small" id="complementaryBtn">Complementary</button>
+                            <button class="btn btn-small" id="analogousBtn">Analogous</button>
+                            <button class="btn btn-small" id="triadicBtn">Triadic</button>
+                            <button class="btn btn-small" id="pastelizeBtn">Pastelize</button>
+                            <button class="btn btn-small" id="muteBtn">Mute Colors</button>
+                        </div>
+                        <div class="harmonizer-output" id="harmonizerOutput" style="display: none;">
+                            <p class="output-label">Generated Palette:</p>
+                            <div class="harmonizer-swatches" id="harmonizerSwatches"></div>
+                            <button class="btn btn-small" id="applyHarmonizerPaletteBtn">Apply Palette</button>
+                            <button class="btn btn-small" id="recolorGridBtn">Recolor Grid</button>
+                        </div>
+                    </div>
+
+                    <!-- Keyword Helper -->
+                    <div class="panel">
+                        <h3>Keyword Helper</h3>
+                        <div class="keyword-controls space-y-small">
+                            <input 
+                                type="text" 
+                                id="patternTitleInput"
+                                class="size-input"
+                                placeholder="Pattern title (optional)"
+                                aria-label="Pattern title for keyword generation"
+                            >
+                            <button class="btn btn-small" id="generateKeywordsBtn">Generate Keywords</button>
+                        </div>
+                        <div class="keyword-output" id="keywordOutput" style="display: none;">
+                            <label for="keywordsTextarea">Keywords:</label>
+                            <textarea 
+                                id="keywordsTextarea"
+                                class="export-textarea"
+                                readonly
+                                aria-label="Generated keywords for BraceletBook"
+                            ></textarea>
+                            <button class="btn btn-small" id="copyKeywordsBtn">Copy Keywords</button>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Estimator -->
+                    <div class="panel">
+                        <h3>Difficulty Estimator</h3>
+                        <button class="btn btn-small" id="analyzeDifficultyBtn">Analyze Pattern</button>
+                        <div class="difficulty-output" id="difficultyOutput" style="display: none;">
+                            <div class="difficulty-badge" id="difficultyBadge"></div>
+                            <div class="difficulty-factors" id="difficultyFactors"></div>
+                            <p class="difficulty-explanation" id="difficultyExplanation"></p>
+                        </div>
+                    </div>
+
+                    <!-- Print Pattern Sheet -->
+                    <div class="panel">
+                        <h3>Print Pattern Sheet</h3>
+                        <button class="btn btn-small" id="generatePrintBtn">Generate Print Sheet</button>
+                        <button class="btn btn-small" id="printBtn" style="display: none;">Print</button>
+                    </div>
+
+                    <!-- Export -->
+                    <div class="panel">
+                        <h3>Export for BraceletBook</h3>
+                        <div class="export-controls space-y-small">
+                            <div class="export-section">
+                                <label for="patternOutput">Pattern:</label>
+                                <textarea 
+                                    id="patternOutput" 
+                                    class="export-textarea"
+                                    readonly
+                                    aria-label="Generated pattern rows in letter form"
+                                ></textarea>
+                                <button 
+                                    class="btn btn-small" 
+                                    id="copyPatternBtn"
+                                    aria-label="Copy pattern to clipboard"
+                                >
+                                    Copy Pattern
+                                </button>
+                            </div>
+                            <div class="export-section">
+                                <label for="legendOutput">Legend:</label>
+                                <textarea 
+                                    id="legendOutput" 
+                                    class="export-textarea"
+                                    readonly
+                                    aria-label="Color legend mapping letters to hex codes"
+                                ></textarea>
+                                <button 
+                                    class="btn btn-small" 
+                                    id="copyLegendBtn"
+                                    aria-label="Copy legend to clipboard"
+                                >
+                                    Copy Legend
+                                </button>
+                            </div>
+                            <button 
+                                class="btn btn-small" 
+                                id="downloadBtn"
+                                aria-label="Download pattern and legend as text file"
+                            >
+                                Download .txt
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Save/Load -->
+                    <div class="panel">
+                        <h3>Save & Load</h3>
+                        <div class="save-controls space-y-small">
+                            <button 
+                                class="btn btn-small" 
+                                id="saveDesignBtn"
+                                aria-label="Save current design to browser storage"
+                            >
+                                Save Design
+                            </button>
+                            <button 
+                                class="btn btn-small" 
+                                id="loadDesignBtn"
+                                aria-label="Load previously saved design"
+                            >
+                                Load Design
+                            </button>
+                            <button 
+                                class="btn btn-small btn-danger" 
+                                id="clearDesignBtn"
+                                aria-label="Clear grid and reset to default state"
+                            >
+                                Clear Design
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
         </div>
-      </div>
+    </main>
+
+    <!-- Mobile Action Bar -->
+    <div class="mobile-action-bar">
+        <button class="mobile-action-btn" id="mobileExportBtn">
+            <span>\ud83d\udce4</span>
+            <span class="mobile-action-text">Export</span>
+        </button>
+        <button class="mobile-action-btn" id="mobilePrintBtn">
+            <span>\ud83d\udda8\ufe0f</span>
+            <span class="mobile-action-text">Print</span>
+        </button>
+        <button class="mobile-action-btn" id="mobileBBBtn">
+            <span>\ud83d\udd17</span>
+            <span class="mobile-action-text">BB Upload</span>
+        </button>
     </div>
 
-    <div class="status-grid">
-      <div class="status-item">
-        <span class="status-label">Platform Status</span>
-        <span class="status-value">🟢 Live</span>
-      </div>
-      <div class="status-item">
-        <span class="status-label">Custom Domain</span>
-        <span class="status-value">braceyourself.evergreenmediadesign.com</span>
-      </div>
-      <div class="status-item">
-        <span class="status-label">SSL/TLS</span>
-        <span class="status-value">✓ Secured</span>
-      </div>
+    <footer class="app-footer">
+        <div class="container">
+            <p>Brace Yourself – A personal pattern designer for bracelet enthusiasts. Created with love. <span id="versionBadge" style="font-size: 0.8rem; opacity: 0.7;"></span></p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Template/Inspiration Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closePreviewModal">&times;</button>
+            <div id="modalPreviewBody"></div>
+        </div>
     </div>
 
-    <div class="cta-buttons">
-      <a href="https://evergreenmediadesign.com" class="btn btn-primary">
-        ← Back to Main Site
-      </a>
+    <!-- Print Preview Modal -->
+    <div class="modal" id="printModal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="closePrintModal">&times;</button>
+            <div id="printPreviewContent"></div>
+        </div>
     </div>
 
-    <div class="footer">
-      <p>&copy; 2026 BraceYourself. Powered by Evergreen Media Design.</p>
-    </div>
-  </div>
+    <!-- Load modular app -->
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>

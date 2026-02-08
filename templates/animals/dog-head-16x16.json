@@ -1,0 +1,30 @@
+{
+  "id": "animal-dog-head-16",
+  "name": "Dog Head 16",
+  "category": "Animals",
+  "width": 16,
+  "height": 16,
+  "palette": {
+    "A": "#d7ccc8",
+    "B": "#263238",
+    "C": "#a1887f"
+  },
+  "pixelGrid": [
+    "..AA........AA..",
+    "..AAA......AAA..",
+    "..AAAAAAAAAAAA..",
+    "..AAAA.BB.AAAA..",
+    "..AAAA.CC.AAAA..",
+    "..AAAAAAAAAAAA..",
+    "...AAAAAAAAAA...",
+    "....AAAAAAAA....",
+    ".....AAAAAA.....",
+    "......AAAA......",
+    ".......AA.......",
+    "................",
+    "................",
+    "................",
+    "................",
+    "................"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "emoji-star-12",
+  "name": "Star Emoji 12",
+  "category": "Emojis",
+  "width": 12,
+  "height": 12,
+  "palette": {
+    "A": "#ffd54f"
+  },
+  "pixelGrid": [
+    ".....AA.....",
+    "....AAAA....",
+    "..AA.AA.AA..",
+    ".AAAAAAAAAA.",
+    "..AA.AA.AA..",
+    "....AAAA....",
+    ".....AA.....",
+    "............",
+    "............",
+    "............",
+    "............",
+    "............"
+  ]
+}

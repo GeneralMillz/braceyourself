@@ -1,0 +1,30 @@
+{
+  "id": "animal-frog-16",
+  "name": "Frog 16",
+  "category": "Animals",
+  "width": 16,
+  "height": 16,
+  "palette": {
+    "A": "#81c784",
+    "B": "#ffffff",
+    "C": "#263238"
+  },
+  "pixelGrid": [
+    "....AA....AA....",
+    "...AAAA..AAAA...",
+    "..AABBB..BBBAA..",
+    "..AAAA.CC.AAAA..",
+    "..AAAA.CC.AAAA..",
+    "..AAAAAAAAAAAA..",
+    "...AAAAAAAAAA...",
+    "....AAAAAAAA....",
+    ".....AAAAAA.....",
+    "......AAAA......",
+    ".......AA.......",
+    "................",
+    "................",
+    "................",
+    "................",
+    "................"
+  ]
+}

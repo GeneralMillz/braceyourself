@@ -1,0 +1,24 @@
+{
+  "id": "heart-classic-12",
+  "name": "Classic Heart 12",
+  "category": "Hearts",
+  "width": 12,
+  "height": 12,
+  "palette": {
+    "A": "#f48fb1"
+  },
+  "pixelGrid": [
+    "....AA..AA..",
+    "...AAAAAA...",
+    "..AAAAAAAA..",
+    "..AAAAAAAA..",
+    "..AAAAAAAA..",
+    "...AAAAAA...",
+    "....AAAA....",
+    ".....AA.....",
+    "............",
+    "............",
+    "............",
+    "............"
+  ]
+}

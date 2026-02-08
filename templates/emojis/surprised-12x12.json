@@ -1,0 +1,26 @@
+{
+  "id": "emoji-surprised-12",
+  "name": "Surprised 12",
+  "category": "Emojis",
+  "width": 12,
+  "height": 12,
+  "palette": {
+    "A": "#ffd54f",
+    "B": "#263238",
+    "C": "#6d4c41"
+  },
+  "pixelGrid": [
+    "..AAAAAA....",
+    ".AAAAAAAA...",
+    ".AAAAAAAA...",
+    ".AA.BB.AA...",
+    ".AA....AA...",
+    ".AA..CCAA...",
+    ".AAAAAAAA...",
+    ".AAAAAAAA...",
+    "..AAAAAA....",
+    "............",
+    "............",
+    "............"
+  ]
+}

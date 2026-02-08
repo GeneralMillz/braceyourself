@@ -1,0 +1,24 @@
+{
+  "id": "heart-pixel-12",
+  "name": "Pixel Heart 12",
+  "category": "Hearts",
+  "width": 12,
+  "height": 12,
+  "palette": {
+    "A": "#ef5350"
+  },
+  "pixelGrid": [
+    "....AAAA....",
+    "...AAAAAA...",
+    "..AAAAAAAA..",
+    "..AAAAAAAA..",
+    "..AAAAAAAA..",
+    "...AAAAAA...",
+    "....AAAA....",
+    ".....AA.....",
+    "............",
+    "............",
+    "............",
+    "............"
+  ]
+}
