@@ -1,8 +1,4 @@
-# BraceYourself
 
-Inspiring wellness and strength movement.
-
-## Quick Start
 
 This folder is configured for GitHub Pages deployment to `braceyourself.evergreenmediadesign.com`.
 
