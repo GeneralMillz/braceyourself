@@ -18,8 +18,9 @@ export function initKeywordHelper() {
     if (generateBtn) {
         generateBtn.addEventListener('click', generateKeywords);
     }
+
     if (copyBtn) {
-        copyBtn.addEventListener('click', () => {
+        copyBtn.addEventListener('click', async () => {
             const { copyToClipboard } = await import('./export.js');
             copyToClipboard('keywordsTextarea');
         });
@@ -64,7 +65,10 @@ export function generateKeywords() {
     }
 
     // Add generic bracelet keywords
-    const braceletKeywords = ['alpha', 'bracelet', 'pattern', 'beads', 'jewelry', 'handmade', 'craft', 'design'];
+    const braceletKeywords = [
+        'alpha', 'bracelet', 'pattern', 'beads', 'jewelry',
+        'handmade', 'craft', 'design'
+    ];
     keywords.push(...braceletKeywords);
 
     // Add aesthetic keywords based on colors
@@ -76,7 +80,9 @@ export function generateKeywords() {
     }
 
     // Remove duplicates and limit to 20
-    const unique = Array.from(new Set(keywords)).filter(k => k.length > 2).slice(0, 20);
+    const unique = Array.from(new Set(keywords))
+        .filter(k => k.length > 2)
+        .slice(0, 20);
 
     const textarea = document.getElementById('keywordsTextarea');
     if (textarea) {

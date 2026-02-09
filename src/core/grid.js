@@ -28,6 +28,8 @@ export function renderGrid() {
     const colCount = state.gridWidth;
     container.style.gridTemplateColumns = `repeat(${colCount}, 28px)`;
 
+    const fragment = document.createDocumentFragment();
+
     for (let row = 0; row < state.gridHeight; row++) {
         for (let col = 0; col < state.gridWidth; col++) {
             const cell = document.createElement('div');
@@ -57,9 +59,10 @@ export function renderGrid() {
                 handleCellErase(row, col);
             });
 
-            container.appendChild(cell);
+            fragment.appendChild(cell);
         }
     }
+    container.appendChild(fragment);
 }
 
 /**

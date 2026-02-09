@@ -508,7 +508,7 @@ export function renderReducedPreview(pixelData, width, height) {
 /**
  * Send processed image to grid
  */
-export function handleSendToGrid() {
+export async function handleSendToGrid() {
     if (!state.processedImageData) {
         showNotification('Please process an image first.', 'error');
         return;

@@ -5,8 +5,8 @@
 
 import { state } from './state.js';
 import { showNotification } from '../utils/notifications.js';
-import { renderPalette, renderGrid } from './palette.js';
-import { renderGrid as renderGridDisplay } from './grid.js';
+import { renderPalette } from './palette.js';
+import { renderGrid } from './grid.js';
 import { updateExport } from './export.js';
 
 const STORAGE_KEY = 'braceyourself_current_design';
@@ -25,9 +25,13 @@ export function saveDesign() {
         selectedColorHex: state.selectedColor ? state.selectedColor.hex : null,
     };
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(design));
-    showNotification('Design saved!', 'success');
-    
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(design));
+        showNotification('Design saved!', 'success');
+    } catch (e) {
+        showNotification('Error saving design.', 'error');
+        return;
+    }
     // Also save to recent sessions
     if (typeof saveRecentSession === 'function') {
         saveRecentSession();
@@ -39,36 +43,41 @@ export function saveDesign() {
  * @returns {Object|null} Loaded design or null if none exists
  */
 export function loadDesign() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return null;
-
+    let saved;
     try {
-        const design = JSON.parse(saved);
-
-        state.gridWidth = design.gridWidth || 24;
-        state.gridHeight = design.gridHeight || 24;
-        state.gridData = design.gridData || [];
-        state.palette = design.palette || [];
-
-        // Restore selected color
-        if (design.selectedColorHex) {
-            state.selectedColor = state.palette.find((c) => c.hex === design.selectedColorHex);
-        }
-        if (!state.selectedColor && state.palette.length > 0) {
-            state.selectedColor = state.palette[0];
-        }
-
-        // Update grid size inputs
-        const widthInput = document.getElementById('widthInput');
-        const heightInput = document.getElementById('heightInput');
-        if (widthInput) widthInput.value = state.gridWidth;
-        if (heightInput) heightInput.value = state.gridHeight;
-
-        return design;
+        saved = localStorage.getItem(STORAGE_KEY);
     } catch (e) {
-        console.error('Error loading design:', e);
+        showNotification('Error accessing localStorage.', 'error');
         return null;
     }
+    if (!saved) return null;
+    let design;
+    try {
+        design = JSON.parse(saved);
+    } catch (e) {
+        showNotification('Error parsing saved design.', 'error');
+        return null;
+    }
+    state.gridWidth = design.gridWidth || 24;
+    state.gridHeight = design.gridHeight || 24;
+    state.gridData = design.gridData || [];
+    state.palette = design.palette || [];
+
+    // Restore selected color
+    if (design.selectedColorHex) {
+        state.selectedColor = state.palette.find((c) => c.hex === design.selectedColorHex);
+    }
+    if (!state.selectedColor && state.palette.length > 0) {
+        state.selectedColor = state.palette[0];
+    }
+
+    // Update grid size inputs
+    const widthInput = document.getElementById('widthInput');
+    const heightInput = document.getElementById('heightInput');
+    if (widthInput) widthInput.value = state.gridWidth;
+    if (heightInput) heightInput.value = state.gridHeight;
+
+    return design;
 }
 
 /**
@@ -84,7 +93,7 @@ export function promptLoadDesign() {
     if (confirm('Load the last saved design? (Current work will be lost.)')) {
         loadDesign();
         renderPalette();
-        renderGridDisplay();
+        renderGrid();
         updateExport();
         showNotification('Design loaded!', 'success');
     }
@@ -93,12 +102,22 @@ export function promptLoadDesign() {
 /**
  * Clear everything and reset to default
  */
-export function handleClearDesign() {
+export async function handleClearDesign() {
     if (confirm('Clear the entire grid and reset to default? This cannot be undone.')) {
         // Import these dynamically to avoid circular deps
-        const { initPalette } = await import('./palette.js');
-        const { initGrid } = await import('./grid.js');
-        
+        let initPalette, initGrid;
+        try {
+            ({ initPalette } = await import('./palette.js'));
+        } catch (e) {
+            showNotification('Failed to load palette module.', 'error');
+            return;
+        }
+        try {
+            ({ initGrid } = await import('./grid.js'));
+        } catch (e) {
+            showNotification('Failed to load grid module.', 'error');
+            return;
+        }
         initPalette();
         initGrid();
         state.gridWidth = 24;
@@ -106,7 +125,7 @@ export function handleClearDesign() {
         document.getElementById('widthInput').value = 24;
         document.getElementById('heightInput').value = 24;
         renderPalette();
-        renderGridDisplay();
+        renderGrid();
         updateExport();
         showNotification('Grid cleared.', 'success');
     }
@@ -116,13 +135,19 @@ export function handleClearDesign() {
  * Load recent sessions from localStorage
  */
 export function loadRecentSessions() {
-    const stored = localStorage.getItem(RECENT_SESSION_KEY);
-    if (stored) {
-        try {
-            state.recentSessions = JSON.parse(stored);
-        } catch (e) {
-            state.recentSessions = [];
-        }
+    let saved;
+    try {
+        saved = localStorage.getItem(RECENT_SESSION_KEY);
+    } catch (e) {
+        showNotification('Error accessing recent sessions.', 'error');
+        return;
+    }
+    if (!saved) return;
+    try {
+        state.recentSessions = JSON.parse(saved);
+    } catch (e) {
+        showNotification('Error parsing recent sessions.', 'error');
+        state.recentSessions = [];
     }
 }
 
@@ -171,7 +196,7 @@ export function loadRecentSession(session) {
     if (titleInput) titleInput.value = session.title;
 
     renderPalette();
-    renderGridDisplay();
+    renderGrid();
     updateExport();
 
     showNotification('Design loaded!', 'success');
@@ -210,8 +235,20 @@ export function generateThumbnailFromGrid() {
  * @returns {string[]} Array of template IDs
  */
 export function getFavorites() {
-    const favorites = localStorage.getItem(FAVORITES_KEY);
-    return favorites ? JSON.parse(favorites) : [];
+    let favorites;
+    try {
+        favorites = localStorage.getItem(FAVORITES_KEY);
+    } catch (e) {
+        showNotification('Error accessing favorites.', 'error');
+        return [];
+    }
+    if (!favorites) return [];
+    try {
+        return JSON.parse(favorites);
+    } catch (e) {
+        showNotification('Error parsing favorites.', 'error');
+        return [];
+    }
 }
 
 /**
@@ -226,7 +263,11 @@ export function toggleFavorite(templateId) {
     } else {
         favorites.push(templateId);
     }
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    try {
+        localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    } catch (e) {
+        showNotification('Error saving favorites.', 'error');
+    }
 }
 
 /**

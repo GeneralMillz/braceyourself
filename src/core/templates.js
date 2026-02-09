@@ -457,7 +457,7 @@ export function renderTemplateLibrary(category) {
         const favorite = document.createElement('button');
         favorite.className = 'template-favorite';
         favorite.innerHTML = '★';
-        favorite.onclick = (e) => {
+        favorite.onclick = async (e) => {
             e.stopPropagation();
             const { toggleFavorite } = await import('./storage.js');
             toggleFavorite(template.id);
@@ -498,7 +498,7 @@ export function applyRandomTemplate(category) {
  * Apply a template to the main grid
  * @param {Object} template - Template object to apply
  */
-export function applyTemplateToGrid(template) {
+export async function applyTemplateToGrid(template) {
     // Resize grid to template size
     state.gridWidth = template.width;
     state.gridHeight = template.height;

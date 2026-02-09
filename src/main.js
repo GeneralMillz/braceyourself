@@ -12,7 +12,7 @@ import { state } from './core/state.js';
 import { initPalette, renderPalette, addColor } from './core/palette.js';
 import { initGrid, renderGrid, handleResizeGrid } from './core/grid.js';
 import { updateExport, copyToClipboard, downloadTextFile } from './core/export.js';
-import { saveDesign, loadDesign, promptLoadDesign, handleClearDesign, loadRecentSessions, renderRecentDesignsPanel } from './core/storage.js';
+import { saveDesign, loadDesign, promptLoadDesign, handleClearDesign, loadRecentSessions } from './core/storage.js';
 import { initTemplateLibrary } from './core/templates.js';
 import { initInspirationGallery } from './core/inspiration.js';
 import { initColorHarmonizer } from './core/harmonizer.js';
@@ -20,7 +20,8 @@ import { initKeywordHelper } from './core/keywords.js';
 import { initDifficultyEstimator } from './core/difficulty.js';
 import { initPrintSheet } from './core/print.js';
 import { initImageWorker, initImageImportListeners } from './core/imageImporter.js';
-import { initWelcomeScreen, handleStartFromTemplate, handleStartFromPhoto, handleStartFromBlank } from './ui/welcome.js';
+// Removed welcome screen imports
+// import { initWelcomeScreen, handleStartFromTemplate, handleStartFromPhoto, handleStartFromBlank } from './ui/welcome.js';
 import { initMobileActionBar } from './ui/mobileBar.js';
 import { initModals } from './ui/modals.js';
 import { showNotification } from './utils/notifications.js';
@@ -42,6 +43,7 @@ export function toggleDeveloperMode() {
     localStorage.setItem('braceyourself_dev_mode', isDeveloperMode ? 'true' : 'false');
     document.body.classList.toggle('dev-mode', isDeveloperMode);
     showNotification(`Developer mode ${isDeveloperMode ? 'ON' : 'OFF'}`, 'info');
+console.log("main.js loaded");
 }
 
 // Check localStorage for developer mode on startup
@@ -66,6 +68,7 @@ if (typeof window !== 'undefined') {
  * Initialize the entire application
  */
 export function initApp() {
+    console.log("Initialization started");
     console.log('🎨 Brace Yourself v' + APP_VERSION + ' initializing...');
 
     // Display version in footer
@@ -88,11 +91,15 @@ export function initApp() {
 
     // Render UI
     renderPalette();
+    console.log("Rendering grid...");
     renderGrid();
+    console.log("Grid rendered");
     updateExport();
 
     // Setup event listeners
+    console.log("Attaching event listeners...");
     initEventListeners();
+    console.log("Event listeners attached");
 
     // Initialize feature modules
     initTemplateLibrary();
@@ -102,13 +109,12 @@ export function initApp() {
     initDifficultyEstimator();
     initPrintSheet();
     initImageImportListeners();
-    initWelcomeScreen();
+    // Directly initialize editor (no welcome screen)
     initMobileActionBar();
     initModals();
 
     // Load recent sessions
     loadRecentSessions();
-    renderRecentDesignsPanel();
 
     console.log('✅ App initialized successfully');
 }
@@ -141,19 +147,7 @@ function initEventListeners() {
         if (e.key === 'Enter') addColor();
     });
 
-    // Welcome screen buttons
-    document.getElementById('welcomeStartTemplate')?.addEventListener('click', () => {
-        document.getElementById('welcomeScreen').classList.add('hidden');
-        handleStartFromTemplate();
-    });
-    document.getElementById('welcomeStartPhoto')?.addEventListener('click', () => {
-        document.getElementById('welcomeScreen').classList.add('hidden');
-        handleStartFromPhoto();
-    });
-    document.getElementById('welcomeStartBlank')?.addEventListener('click', () => {
-        document.getElementById('welcomeScreen').classList.add('hidden');
-        handleStartFromBlank();
-    });
+    // (welcome screen logic removed)
 }
 
 /**

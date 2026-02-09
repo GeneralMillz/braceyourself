@@ -6,7 +6,8 @@
 import { state } from './state.js';
 import { showNotification } from '../utils/notifications.js';
 import { hexToHsl, hslToHex, distanceBetweenColors, hexToRgb } from '../utils/colorUtils.js';
-import { renderPalette, renderGrid } from './palette.js';
+import { renderPalette } from './palette.js';
+import { renderGrid } from './grid.js';
 import { updateExport } from './export.js';
 
 /**

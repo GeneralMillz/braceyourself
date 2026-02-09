@@ -51,7 +51,7 @@ export function startGuidedFlow(mode) {
             '3. Keywords & Title',
             getGuidedKeywordText(mode),
             [
-                { text: 'Generate Keywords', action: () => {
+                { text: 'Generate Keywords', action: async () => {
                     const { generateKeywords } = await import('./keywords.js');
                     generateKeywords();
                 }}
@@ -65,11 +65,11 @@ export function startGuidedFlow(mode) {
             '4. Ready to Export',
             'Your pattern is ready! What would you like to do?',
             [
-                { text: 'Export Pattern', action: () => {
+                { text: 'Export Pattern', action: async () => {
                     const { copyToClipboard } = await import('./export.js');
                     copyToClipboard('patternOutput');
                 }},
-                { text: 'Print', action: () => {
+                { text: 'Print', action: async () => {
                     const { generatePrintPreview } = await import('./print.js');
                     generatePrintPreview();
                 }},
